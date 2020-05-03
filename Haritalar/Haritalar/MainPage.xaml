@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             mc:Ignorable="d"
+             x:Class="Haritalar.MainPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+
+    <StackLayout Orientation="Vertical">
+        
+        
+        <maps:Map x:Name="haritaMap"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  MapType="Hybrid"
+                  IsShowingUser="True"
+                  MapClicked="HaritaMap_MapClicked"                
+                  
+                  HasZoomEnabled="True"
+                  HeightRequest="400" Visual="Default"
+                  />
+        <StackLayout Orientation="Horizontal" IsVisible="False">
+            <Label Text="adres" />
+            <Label x:Name="adresLabel"/>
+        </StackLayout>
+        <ScrollView>
+            <ListView x:Name="adreslerListView"
+                      ItemSelected="adreslerListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell>
+                            <TextCell.Text>
+                                <Binding Path="." />
+                            </TextCell.Text>
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+    </StackLayout>
+    
+
+</ContentPage>
